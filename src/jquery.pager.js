@@ -18,9 +18,14 @@
     };
 
     function Pager($ele, options) {
+        if (typeof Pager.instance === 'object') {
+            return Pager.instance
+        }
         this.$ele = $ele;
         this.options = options = $.extend(defaults, options || {});
         this.init();
+        Pager.instance = this
+        return this
     }
     Pager.prototype = {
         constructor: Pager,
